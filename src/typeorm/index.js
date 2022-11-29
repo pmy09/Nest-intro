@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+exports.Booking = exports.Education = exports.Profile = exports.User = exports.Product = void 0;
+var product_entity_1 = require("./product.entity");
+exports.Product = product_entity_1.Product;
+var profile_entity_1 = require("./profile.entity");
+exports.Profile = profile_entity_1.Profile;
+var user_entity_1 = require("./user.entity");
+exports.User = user_entity_1.User;
+var education_entity_1 = require("./education.entity");
+exports.Education = education_entity_1.Education;
+var booking_entity_1 = require("./booking.entity");
+exports.Booking = booking_entity_1.Booking;
+var entities = [product_entity_1.Product, user_entity_1.User, profile_entity_1.Profile, education_entity_1.Education, booking_entity_1.Booking];
+exports["default"] = entities;
