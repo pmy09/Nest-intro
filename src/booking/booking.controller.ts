@@ -6,6 +6,8 @@ import {
   Param,
   Patch,
   Delete,
+  Headers,
+  Req,
 } from '@nestjs/common';
 import { CreateBookingDto } from './booking.dtos';
 import { BookingService } from './booking.service';
@@ -31,17 +33,23 @@ export class BookingController {
     return this.bookingService.getCity(city);
   }
 
-  //   @Patch(':id')
-  //   updateProduct(
-  //     @Param('id') profileId: string,
-  //     @Body() updateProfileDto: EducationService,
-  //   ) {
-  //     return this.educationService.updateProfile(profileId, updateProfileDto);
-  //   }
+  @Get('hotels/:hotelId')
+  getHotelOffer(@Param('hotelId') hotelId: string): any {
+    return this.bookingService.getOffer(hotelId);
+  }
 
-  //   @Delete(':id')
-  //   deleteProduct(@Param('id') userId: string) {
-  //     this.usersService.deleteUser(userId);
-  //     return null;
-  //   }
+  @Post('activities')
+  getActivity(@Body() body: CreateBookingDto): any {
+    return this.bookingService.getActivities(body.geoCode);
+  }
+
+  @Post('order')
+  makeBooking(
+    @Body() body: CreateBookingDto,
+    @Headers() headers: Record<string, string>,
+    @Req() req: Request,
+  ): any {
+    // console.log('headers', req);
+    return this.bookingService.bookHotel(body.booking2);
+  }
 }
